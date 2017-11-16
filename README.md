@@ -1,7 +1,7 @@
 # Mail2json
 Docker stack to convert mail to json and save it in mongo.
 
-Based on MailToJson by https://www.newsmanapp.com/
+Based on MailToJson project by https://www.newsmanapp.com/
 
 Build:
 ```
