@@ -1,0 +1,31 @@
+version: "3.2"
+
+services:
+  postfix:
+    build: postfix/
+    environment:
+     - HOSTNAME=example.com
+     - VIRTUAL=example.com
+     - RELAYHOST=local
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - target: 25
+        published: 25
+        protocol: tcp
+        mode: host
+    networks:
+      - front-tier
+      - back-tier
+  mongo:
+    image: "mvertes/alpine-mongo"
+    expose:
+      - "27017"
+    restart: always
+    networks:
+      - back-tier
+
+networks:
+  front-tier:
+  back-tier:
